@@ -1,13 +1,15 @@
 package in.example.demo;
 
-import java.util.List;
-
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
+@RequiredArgsConstructor
 public class PostController {
+	private final PostRepository postRepository = null;
+
 	@GetMapping("/hello")
 	public String showHello(Model model) {
 		var sampleText = "サンプルテキスト";
@@ -17,11 +19,7 @@ public class PostController {
 
 	@GetMapping
 	public String showList(Model model) {
-		var postList = List.of(
-				new PostEntity(1, "投稿1"),
-				new PostEntity(2, "投稿2"),
-				new PostEntity(3, "投稿3")
-		);
+		var postList = postRepository.findAll();
 		model.addAttribute("postList", postList);
 		return "index";
 	}
