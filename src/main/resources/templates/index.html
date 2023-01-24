@@ -6,5 +6,9 @@
 </head>
 <body>
 	投稿の一覧表示
+	<ul th:each="post:${postList}">
+    	<li th:text="${post.getMemo()}">
+    	</li>
+	</ul>
 </body>
 </html>
