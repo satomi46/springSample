@@ -11,5 +11,10 @@ public class PostController {
 		var sampleText = "サンプルテキスト";
 		model.addAttribute("sampleText", sampleText);
 		return "hello";
-	}	
+	}
+
+	@GetMapping
+	public String showList() {
+		return "index";
+	}
 }
